@@ -3,3 +3,5 @@ aiohttp
 aiomysql
 aiopg
 jinja2
+psycopg2
+pymysql
