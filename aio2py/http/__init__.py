@@ -1,6 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
+# Language Version: 3.4.x
+# Last Modified: 2015/7/9 1:32
 
-__author__ = "lfblogs"
+
+__all__ = []
+__author__ = "lfblogs (email:13701242710@163.com)"
+__version__ = "1.0.1"
 
 from aio2py.http.request import get,post
 from aio2py.http.exc import add_routes,add_static,add_templates
