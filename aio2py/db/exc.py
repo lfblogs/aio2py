@@ -1,16 +1,9 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# Language Version: 3.4.x
-# Last Modified: 2015/7/16 17:21
 
+__author__ = "lfblogs"
 
-__all__ = []
-__author__ = "lfblogs (email:13701242710@163.com)"
-__version__ = "1.0.1"
 
 import asyncio
-import aiomysql
-import aiopg
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -24,7 +17,7 @@ def select(sql, args, size=None):
         yield from cursor.execute(sql.replace('?', '%s'), args or ())
         value = (yield from cursor.fetchmany(size)) if size else (yield from cursor.fetchall())
         yield from cursor.close()
-        logging.info('rows returned: {}'.format(value))
+        logging.info('rows return: {}'.format(value))
         return value
 
 @asyncio.coroutine

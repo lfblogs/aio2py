@@ -1,18 +1,12 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# Language Version: 3.4.x
-# Last Modified: 2015/7/16 17:21
 
-
-__all__ = []
-__author__ = "lfblogs (email:13701242710@163.com)"
-__version__ = "1.0.1"
+__author__ = "lfblogs"
 
 
 import logging
 import asyncio
 
-from aio2py.db.exec import select, execute
+from aio2py.db import select, execute
 from aio2py.db.metaclass import ModelMetaclass
 
 
@@ -101,7 +95,7 @@ class Model(dict, metaclass=ModelMetaclass):
         args.append(self.getValueOrDefault(self.__primary_key__))
         rows = yield from execute(self.__insert__, args)
         if rows != 1:
-            logging.warn('failed to insert record: affected rows: %s' % rows)
+            logging.info('failed to insert record: affected rows: %s' % rows)
 
     @asyncio.coroutine
     def update(self):
@@ -109,11 +103,11 @@ class Model(dict, metaclass=ModelMetaclass):
         args.append(self.getValue(self.__primary_key__))
         rows = yield from execute(self.__update__, args)
         if rows != 1:
-            logging.warn('failed to update by primary key: affected rows: %s' % rows)
+            logging.info('failed to update by primary key: affected rows: %s' % rows)
 
     @asyncio.coroutine
     def remove(self):
         args = [self.getValue(self.__primary_key__)]
         rows = yield from execute(self.__delete__, args)
         if rows != 1:
-            logging.warn('failed to remove by primary key: affected rows: %s' % rows)
+            logging.info('failed to remove by primary key: affected rows: %s' % rows)
