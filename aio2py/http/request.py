@@ -1,23 +1,31 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# Language Version: 3.4.x
-# Last Modified: 2015/7/9 1:32
 
+__author__ = "Liu Fei"
+__github__ = "http://github.com/lfblogs"
+__all__ = [
+    "GET",
+    "POST"
+]
 
-__all__ = []
-__author__ = "lfblogs (email:13701242710@163.com)"
-__version__ = "1.0.1"
+"""
 
+Define decorator:GET, POST
+
+"""
 
 import functools
 import logging
+try:
+    import aiohttp
+except ImportError:
+    from aio2py.required import aiohttp
 
 logging.basicConfig(level=logging.INFO)
 
-def get(path):
-    '''
+def GET(path):
+    """
         Define decorator @get('/path'):
-    '''
+    """
 
     def decorator(func):
         @functools.wraps(func)
@@ -28,10 +36,10 @@ def get(path):
         return wrapper
     return decorator
 
-def post(path):
-    '''
+def POST(path):
+    """
         Define decorator @post('/path'):
-    '''
+    """
 
     def decorator(func):
         @functools.wraps(func)
@@ -42,4 +50,5 @@ def post(path):
         return wrapper
     return decorator
 
-
+def Response():
+    return web.Response()

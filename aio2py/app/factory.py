@@ -1,23 +1,23 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# Language Version: 3.4.x
-# Last Modified: 2015/7/9 1:32
 
+__author__ = "Liu Fei"
+__github__ = "http://github.com/lfblogs"
+__all__ = [
+    "logger_factory",
+    "data_factory",
+    "response_factory",
+]
 
-__all__ = []
-__author__ = "lfblogs (email:13701242710@163.com)"
-__version__ = "1.0.1"
-
+"""
+"""
 
 
 import asyncio
 import json
-import time
-from datetime import datetime
 try:
     from aiohttp import web
 except ImportError:
-    from aio2py.require.aiohttp import web
+    from aio2py.required.aiohttp import web
 import logging
 
 @asyncio.coroutine
@@ -99,15 +99,3 @@ def response_factory(app, handler):
         return resp
     return response
 
-def datetime_filter(t):
-    delta = int(time.time() - t)
-    if delta < 60:
-        return u'1分钟前'
-    if delta < 3600:
-        return u'%s分钟前' % (delta // 60)
-    if delta < 86400:
-        return u'%s小时前' % (delta // 3600)
-    if delta < 604800:
-        return u'%s天前' % (delta // 86400)
-    dt = datetime.fromtimestamp(t)
-    return u'%s年%s月%s日' % (dt.year, dt.month, dt.day)

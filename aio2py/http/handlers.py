@@ -1,12 +1,18 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-# Language Version: 3.4.x
-# Last Modified: 2015/7/9 1:32
 
+__author__ = "Liu Fei"
+__github__ = "http://github.com/lfblogs"
+__all__ = [
+    "get_required_kw_args",
+    "get_named_kw_args",
+    "has_named_kw_args",
+    "has_var_kw_arg",
+    "has_request_arg",
+    "RequestHandler",
+]
 
-__all__ = []
-__author__ = "lfblogs (email:13701242710@163.com)"
-__version__ = "1.0.1"
+"""
+"""
 
 import asyncio
 import inspect
@@ -16,7 +22,7 @@ from urllib import parse
 try:
     from aiohttp import web
 except ImportError:
-    from aio2py.require.aiohttp import web
+    from aio2py.required.aiohttp import web
 from aio2py.api import APIError
 
 
