@@ -15,7 +15,7 @@ aiomysql,aiopg,aiohttp was not found,try import required modules.
 
 """
 
-__version__ = "1.1.0"
+__version__ = "1.1.6"
 
 def version():
     return __version__
